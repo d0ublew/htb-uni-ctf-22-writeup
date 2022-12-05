@@ -1,0 +1,3 @@
+part1: HTB{C0m3_0n
+part2: _1t_w4s_t00_g00d_t0_b3_tru3}
+HTB{C0m3_0n_1t_w4s_t00_g00d_t0_b3_tru3}
