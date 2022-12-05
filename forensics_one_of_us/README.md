@@ -28,3 +28,25 @@ The tidied code can be found on `debug.vbs`.
 After knowing that this is `RijndaelManaged` cryptography and the `Key` is `8xppg2oX68Bo6koL7hwSeC8bCEWvk540`, we try to get the other properties such as the `KeySize` which is `256`, `BlockSize` which is `256` too, and `Mode`, in this case it is `1` which means [`CBC` mode](https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.ciphermode?view=net-7.0). As for the `IV` seems like it is derived from this line of code `BFSsfIzKNm = FVaFfsygaGuUBB(32)` and the output of `FVaFfsygaGuUBB()` function is random everytime.
 
 Looking back at the content of `mail.txt` we can see that the body has 32 characters, a pipe symbol as separator `|`, and `base64` encoded string. These 32 characters might be the `IV` for the cipher as it matches the number in this function call, `FVaFfsygaGuUBB(32)`.
+
+Next, we can write a simple `C#` program to decrypt it. This code can be found on `decrypt.cs`.
+
+To compile `decrypt.cs` in Linux, we need to install the compiler from [https://www.mono-project.com/docs/about-mono/languages/csharp/](https://www.mono-project.com/docs/about-mono/languages/csharp/)
+
+```sh
+$ mcs ./decrypt.cs
+$ mono ./decrypt.exe
+Decrypted data:
+Dear Austin,
+
+
+I created an account for you in the forbidden spells server as you wished.
+
+Your credentials are:
+
+username: paustin
+password: HTB{th3s3_sp3lls_4r3_t00_d4ng3r0us}
+
+Sincerely,
+P
+```

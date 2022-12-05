@@ -36,4 +36,4 @@ $ find ./html/ -type f -newermt '2022-11-25' \! -newermt '2022-11-26' | xargs st
 6. Noticed obfuscated javascript in `./html/wp-blogs/2022/11/index.php`
 7. Run the javascript in isolated environment, which downloaded a `PE64` executable file
 8. Analyze it with [`floss`](https://github.com/mandiant/flare-floss), which is the next level of `strings` tool that only works with `PE` file
-9. `floss` found the part 2 of the flag
+9. Run `floss` and found the part 2 of the flag
